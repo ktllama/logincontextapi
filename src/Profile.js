@@ -9,10 +9,8 @@ export const Profile = () => {
     //we are grabbing username here not set username bc thats the variable that we want for this component
     
     const themeStyles = {
-        backgroundColor: darkTheme ? '#333' : '#ccc',
+        backgroundColor: darkTheme ? '#333' : '#FFF',
         color:darkTheme ? '#ccc' : '#333',
-        padding: '1rem',
-        margin: '1rem'
     }
 
     function toggleTheme() {
@@ -20,14 +18,14 @@ export const Profile = () => {
       }
 
     return (
-        <div className='loginbox'>
-            <h1>Profile</h1>
-            <h2>Welcome {username}! </h2>
-            <button onClick={() => {setShowProfile(false)}}> log out</button>
-<br />
-            <button style={themeStyles} onClick={toggleTheme}>{darkTheme ? 'set to light theme' : 'set to dark theme'} </button>
-
-            
-        </div>
+        <div className='loginbox' style={themeStyles}>
+                <h1>Profile</h1>
+                <h2>Welcome {username}! </h2>
+                <button onClick={() => {setShowProfile(false)}}> log out</button>
+                <br />
+                <button onClick={toggleTheme}>{darkTheme ? 'set to light theme' : 'set to dark theme'} </button>
+    
+                
+            </div>
     )
 }
