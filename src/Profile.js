@@ -1,21 +1,21 @@
 import React, { useContext } from 'react';
 import { LoginContext, ThemeContext } from './Context/LoginContext';
-import { Login } from './Login';
 
 export const Profile = () => {
 
     const { username, setShowProfile } = useContext(LoginContext);
-    const { darkTheme, setDarkTheme } = useContext(ThemeContext);
     //we are grabbing username here not set username bc thats the variable that we want for this component
-    
+    const {darkTheme, setDarkTheme} = useContext(ThemeContext)
+    //we are getting these functions using a custom hook from ThemeContext.. dont forget to import!
+
+    function toggleTheme() {
+        setDarkTheme(prevDarkTheme => !prevDarkTheme)
+    }
+
     const themeStyles = {
         backgroundColor: darkTheme ? '#333' : '#FFF',
         color:darkTheme ? '#ccc' : '#333',
     }
-
-    function toggleTheme() {
-        setDarkTheme(prevDarkTheme => !prevDarkTheme)
-      }
 
     return (
         <div className='loginbox' style={themeStyles}>
