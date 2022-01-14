@@ -15,7 +15,7 @@ export const Login = () => {
     return (
         <div className='loginbox'>
         <h1>LOGIN</h1>
-        <formgroup>
+
             <label htmlFor='username'>username: </label>
             <input
                 id="username"
@@ -26,12 +26,12 @@ export const Login = () => {
                     setUsername(e.target.value);
                 }}
             />
-        </formgroup>
+
         <br />
-        <formgroup>
+       
             <label htmlFor='password'>Password:</label>
             <input id="password" name="password" type="password" placeholder='password' />
-        </formgroup>
+        
         <br />
         <button onClick={() => {setShowProfile(true)}}> LOGIN </button>
             
