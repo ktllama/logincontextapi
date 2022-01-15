@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { LoginContext } from './Context/LoginContext';
-
 //import the context you want to use from the parent component with useContext and the logincontext we are wanting to pass the info from
 
 export const Login = () => {
@@ -13,28 +12,31 @@ export const Login = () => {
 
 
     return (
-        <div className='loginbox'>
-        <h1>LOGIN</h1>
-
-            <label htmlFor='username'>username: </label>
-            <input
-                id="username"
-                name="username"
-                type="text"
-                placeholder='Username'
-                onChange={(e) => {
-                    setUsername(e.target.value);
-                }}
-            />
-
-        <br />
-       
-            <label htmlFor='password'>Password:</label>
-            <input id="password" name="password" type="password" placeholder='password' />
-        
-        <br />
-        <button onClick={() => {setShowProfile(true)}}> LOGIN </button>
+      <>
+            <div className='loginbox'>
+            <h1>LOGIN</h1>
+    
+                <label htmlFor='username'>username: </label>
+                <input
+                    id="username"
+                    name="username"
+                    type="text"
+                    placeholder='Username'
+                    onChange={(e) => {
+                        setUsername(e.target.value);
+                    }}
+                />
+    
+            <br />
+           
+                <label htmlFor='password'>Password:</label>
+                <input id="password" name="password" type="password" placeholder='password' />
             
-        </div>
+            <br />
+            <button onClick={() => {setShowProfile(true)}}> LOGIN </button>
+                
+            </div>
+    
+      </>
     )
 }

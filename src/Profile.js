@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { LoginContext, ThemeContext } from './Context/LoginContext';
+import { Contacts } from './Contacts';
 
 export const Profile = () => {
 
@@ -18,14 +19,18 @@ export const Profile = () => {
     }
 
     return (
-        <div className='loginbox' style={themeStyles}>
-                <h1>Profile</h1>
-                <h2>Welcome {username}! </h2>
-                <button onClick={() => {setShowProfile(false)}}> log out</button>
-                <br />
-                <button onClick={toggleTheme}>{darkTheme ? 'set to light theme' : 'set to dark theme'} </button>
-    
-                
+        <>
+            <div className='loginbox' style={themeStyles}>
+                    <h1>Profile</h1>
+                    <h2>Welcome {username}! </h2>
+                    <button onClick={() => {setShowProfile(false)}}> log out</button>
+                    <br />
+                    <button onClick={toggleTheme}>{darkTheme ? 'set to light theme' : 'set to dark theme'} </button>
+        
+                    
             </div>
+            <Contacts theme={themeStyles} toggle={toggleTheme}/>
+        </>
+
     )
 }

@@ -3,6 +3,7 @@ import { Login } from './Login';
 import React, { useState } from 'react';
 import { Profile } from './Profile';
 import { LoginContext, ThemeContext } from './Context/LoginContext';
+import { Contacts } from './Contacts';
 
 function App() {
   const [username, setUsername] = useState('');
