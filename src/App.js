@@ -1,14 +1,14 @@
 import './App.css';
+import React, { useReducer } from 'react';
 import { Login } from './Login';
-import React, { useState } from 'react';
 import { Profile } from './Profile';
-import { LoginContext, ThemeContext } from './Context/LoginContext';
-import { Contacts } from './Contacts';
+import { StateContext, DispatchContext, reducer, initialState } from './Context/reducer';
 
 function App() {
-  const [username, setUsername] = useState('');
-  const [showProfile, setShowProfile] = useState(false);
-  const [darkTheme, setDarkTheme] = useState(true);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  // const [username, setUsername] = useState('');
+  // const [showProfile, setShowProfile] = useState(false);
+  // const [darkTheme, setDarkTheme] = useState(true);
 
 //all the states you want to share to components should be in the parent most component
 //the value you are passing below an object containing all of the different things that we want to access inside components the provider wraps around
@@ -16,11 +16,11 @@ function App() {
 
   return (
     <div className="App">
-    <LoginContext.Provider value={{ username, setUsername, setShowProfile }}>
-      <ThemeContext.Provider value={{darkTheme, setDarkTheme}}>
-        {showProfile ? <Profile /> : <Login />}
-      </ThemeContext.Provider>
-    </LoginContext.Provider>
+    <StateContext.Provider value={state}>
+      <DispatchContext.Provider value={dispatch}>
+        {state.showProfile ? <Profile /> : <Login />}
+      </DispatchContext.Provider>
+    </StateContext.Provider>
     </div>
   );
 }
