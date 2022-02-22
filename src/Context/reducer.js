@@ -17,7 +17,7 @@ export const reducer = (state, action) => {
     switch (action.type) {
         case 'setUsername':
             return { ...state, username : action.payload};
-        case 'showProfile':
+        case 'toggleShowProfile':
             return { ...state, showProfile: !state.showProfile};
         case 'toggleTheme':
             return { ...state, darkTheme: !state.darkTheme};
@@ -29,6 +29,6 @@ export const reducer = (state, action) => {
 //action helps avoid typos
 export const ACTION = {
     SETUSERNAME: 'setUsername',
-    SHOWPROFILE: 'showProfile',
+    SHOWPROFILE: 'toggleShowProfile',
     TOGGLETHEME: 'toggleTheme'
 }

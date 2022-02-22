@@ -1,31 +1,35 @@
 import React, { useContext } from 'react';
-import { LoginContext, ThemeContext } from './Context/LoginContext';
+import { StateContext, DispatchContext } from './Context/reducer';
 import { Contacts } from './Contacts';
 
 export const Profile = () => {
 
-    const { username, setShowProfile } = useContext(LoginContext);
-    //we are grabbing username here not set username bc thats the variable that we want for this component
-    const {darkTheme, setDarkTheme} = useContext(ThemeContext)
-    //we are getting these functions using a custom hook from ThemeContext.. dont forget to import!
+    const state = useContext(StateContext);
+    const dispatch = useContext(DispatchContext);
+
+    //ONLY FOR USECONTEXT WITHOUT USE REDUCER
+    // const { username, setShowProfile } = useContext(LoginContext);
+    // //we are grabbing username here not set username bc thats the variable that we want for this component
+    // const {darkTheme, setDarkTheme} = useContext(ThemeContext)
+    // //we are getting these functions using a custom hook from ThemeContext.. dont forget to import!
 
     function toggleTheme() {
-        setDarkTheme(prevDarkTheme => !prevDarkTheme)
+        dispatch({ type: 'toggleTheme' })
     }
 
     const themeStyles = {
-        backgroundColor: darkTheme ? '#333' : '#FFF',
-        color:darkTheme ? '#ccc' : '#333',
+        backgroundColor: state.darkTheme ? '#333' : '#FFF',
+        color:state.darkTheme ? '#ccc' : '#333',
     }
 
     return (
         <>
             <div className='loginbox' style={themeStyles}>
                     <h1>Profile</h1>
-                    <h2>Welcome {username}! </h2>
-                    <button onClick={() => {setShowProfile(false)}}> log out</button>
+                    <h2>Welcome {state.username}! </h2>
+                    <button onClick={(() => dispatch({ type: 'toggleShowProfile' }))}> log out</button>
                     <br />
-                    <button onClick={toggleTheme}>{darkTheme ? 'set to light theme' : 'set to dark theme'} </button>
+                    <button onClick={toggleTheme}>{state.darkTheme ? 'set to light theme' : 'set to dark theme'} </button>
         
                     
             </div>

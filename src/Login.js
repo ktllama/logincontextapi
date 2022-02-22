@@ -1,12 +1,16 @@
-import React, { useState, useContext } from 'react';
-import { LoginContext } from './Context/LoginContext';
+import React, { useContext } from 'react';
+import { DispatchContext } from './Context/reducer';
 //import the context you want to use from the parent component with useContext and the logincontext we are wanting to pass the info from
 
 export const Login = () => {
 
+
+    const dispatch = useContext(DispatchContext);
+
+    //THIS IS FOR USE CONTEXT ONLY
     //destructure the variables you got from the loginContext
     //in this case we only want the set username
-    const {setUsername, setShowProfile} = useContext(LoginContext)
+    // const {setUsername, setShowProfile} = useContext(LoginContext)
     //so what this is doing is grabbing the loginContext and the setusername variable we are providing through that context provider
     //now we can use this context api in this application
 
@@ -23,8 +27,9 @@ export const Login = () => {
                     type="text"
                     placeholder='Username'
                     onChange={(e) => {
-                        setUsername(e.target.value);
+                        dispatch({type: 'setUsername', payload: e.target.value });
                     }}
+                    //when passing input data or change data need to set type and payload
                 />
     
             <br />
@@ -33,7 +38,7 @@ export const Login = () => {
                 <input id="password" name="password" type="password" placeholder='password' />
             
             <br />
-            <button onClick={() => {setShowProfile(true)}}> LOGIN </button>
+            <button onClick={() => {dispatch({ type: 'toggleShowProfile'})}}> LOGIN </button>
                 
             </div>
     
